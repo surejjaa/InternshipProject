@@ -1,55 +1,60 @@
 import axios from "axios";
+import testData from "./test.data.js";
 
 class ApiRequests{
-    async getRequest(){
-        axios.get('https://fakerestapi.azurewebsites.net/api/v1/Authors')
+    async getRequest(url){
+        axios.get(`${url}`)
         .then(function (response) {
             console.log(response);
+            console.log(response.status);
+            return response;
         })
         .catch(function (error) {
             console.log(error);
         })
         .finally(function () {
-            console.log(response.status);
         });
     }
 
-    async postRequest(data){
-        axios.post('https://fakerestapi.azurewebsites.net/api/v1/Authors', data)
+    async postRequest(url, data){
+        axios.post(`${url}`, data)
         .then(function (response) {
             console.log(response);
+            console.log(response.status);
+            return response;
         })
         .catch(function (error) {
             console.log(error);
         })
         .finally(function () {
-            console.log(response.status);
         });
     }
 
     async putRequest(id, data){
-        axios.put(`https://fakerestapi.azurewebsites.net/api/v1/Authors/${id}`, data)
+        axios.put(`${testData.url}/${id}`, data)
         .then(function (response) {
             console.log(response);
+            console.log(response.status);
+            return response;
         })
         .catch(function (error) {
             console.log(error);
         })
         .finally(function () {
-            console.log(response.status);
         });
     }
 
     async deleteRequest(id){
-        axios.delete(`https://fakerestapi.azurewebsites.net/api/v1/Authors/${id}`)
+        axios.delete(`${testData.url}/${id}`)
         .then(function (response) {
             console.log(response);
+            console.log(response.status);
+            return response;
         })
         .catch(function (error) {
             console.log(error);
         })
         .finally(function () {
-            console.log(response.status);
         });
     }
 }
